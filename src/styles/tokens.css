@@ -1,0 +1,131 @@
+/* ── Alvar — personal design system ───────────────────────────────────────────
+   Tailwind v4 CSS-first config, same pattern as so-design-system's globals.css.
+   Full reasoning: ../../DESIGN-SYSTEM.md
+
+   HOW TO USE:
+   - Copy this whole file into your project's globals.css, or merge it above
+     your existing `@theme inline` block.
+   - Outdoor-mode apps (workout-app): leave the default light `:root` values —
+     do not add class="dark" to <html>.
+   - Companion/studio apps (research-pod): add class="dark" to <html> by
+     default so both mobile and desktop start in the dark palette.
+*/
+
+@import 'tailwindcss';
+
+/* Step 1: raw values that flip between light (outdoor) and dark (companion/studio) */
+:root {
+  --alvar-canvas: #ede8dc;
+  --alvar-surface: #f6f5f1;
+  --alvar-raised: #ffffff;
+  --alvar-muted-bg: #e3dcc9;
+  --alvar-foreground: #15181b;
+  --alvar-muted-text: #6e6858;
+  --alvar-border: #ddd6c4;
+
+  /* the three blues — see DESIGN-SYSTEM.md section 2 for role reasoning */
+  --alvar-action: #3e4a96; /* blåeld — rare highlight only */
+  --alvar-accent: #3e6fa0; /* cikoria — everyday interactive */
+  --alvar-identity: #1b4b66; /* baltic — chrome, not interaction */
+
+  /* status */
+  --alvar-success: #5c7a52; /* moss */
+  --alvar-warning: #b8894a; /* lichen */
+  --alvar-error: #b23a34; /* rowan */
+}
+
+.dark {
+  --alvar-canvas: #15181b;
+  --alvar-surface: #23272b;
+  --alvar-raised: #2b3034;
+  --alvar-muted-bg: #1c2023;
+  --alvar-foreground: #f3f2ed;
+  --alvar-muted-text: #9ba1a8;
+  --alvar-border: #33383c;
+
+  --alvar-action: #4e5ab0;
+  --alvar-accent: #6fa8de;
+  --alvar-identity: #2b6e93;
+
+  --alvar-success: #7fa06e;
+  --alvar-warning: #d9a567;
+  --alvar-error: #d9695f;
+}
+
+/* Step 2: register with Tailwind */
+@theme inline {
+  /* Typography — both native, nothing to load */
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', system-ui, sans-serif;
+  --font-serif: ui-serif, Georgia, serif; /* resolves to New York in Safari/WebKit */
+
+  /* Semantic — react to .dark via the CSS vars above */
+  --color-canvas: var(--alvar-canvas);
+  --color-surface: var(--alvar-surface);
+  --color-raised: var(--alvar-raised);
+  --color-muted: var(--alvar-muted-bg);
+  --color-foreground: var(--alvar-foreground);
+  --color-muted-text: var(--alvar-muted-text);
+  --color-border: var(--alvar-border);
+
+  --color-action: var(--alvar-action);
+  --color-accent: var(--alvar-accent);
+  --color-identity: var(--alvar-identity);
+
+  --color-status-success: var(--alvar-success);
+  --color-status-warning: var(--alvar-warning);
+  --color-status-error: var(--alvar-error);
+
+  /* Type scale — see DESIGN-SYSTEM.md section 3. 13px is the floor, nothing smaller. */
+  --text-caption: 13px;
+  --text-body: 16px;
+  --text-h3: 18px;
+  --text-h2: 22px;
+  --text-h1: 26px;
+  --text-reading: 18px; /* studio article body, pair with font-serif */
+  --text-stat: 64px; /* outdoor big number — can go to 96px per-component */
+
+  /* Border radius — reused as-is from so-design-system; no reason to diverge */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 999px;
+
+  /* Motion — three distinct characters, not one style everywhere. See section 5. */
+  --duration-outdoor: 120ms;
+  --ease-outdoor: linear;
+  --duration-studio: 160ms;
+  --ease-studio: ease-out;
+  --duration-companion: 300ms;
+  --ease-companion: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@layer base {
+  body {
+    @apply bg-canvas text-foreground antialiased;
+    font-size: var(--text-body);
+    line-height: 1.6;
+  }
+  h1 {
+    font-size: var(--text-h1);
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  h2 {
+    font-size: var(--text-h2);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+  h3 {
+    font-size: var(--text-h3);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  caption,
+  .caption {
+    font-size: var(--text-caption);
+    font-weight: 500;
+  }
+}
