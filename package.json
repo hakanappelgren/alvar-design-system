@@ -1,0 +1,19 @@
+{
+  "name": "alvar-design-system",
+  "version": "0.1.0",
+  "description": "Håkan's personal design system — Tailwind v4 tokens and starter React components.",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/components/ui/index.ts",
+    "./tokens.css": {
+      "style": "./src/styles/tokens.css",
+      "default": "./src/styles/tokens.css"
+    }
+  },
+  "files": ["src", "DESIGN-SYSTEM.md"],
+  "peerDependencies": {
+    "react": ">=18",
+    "tailwindcss": ">=4"
+  }
+}

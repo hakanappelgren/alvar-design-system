@@ -12,9 +12,9 @@ workout-app has no visual design system applied yet — `globals.css` is a
 single unstyled rule (`background: #0b0b0c; color: #ffffff`). The gap isn't
 just "unstyled," though: this repo's own `/design` workflow
 (`.claude/commands/design.md` and `.claude/agents/designer.md`) currently
-hardcodes SeventyOne's work brand teal (`#00968C`) as its "brand" color and
+hardcodes a teal (`#00968C`) as its "brand" color and
 `bg-gray-950` / `bg-gray-50` as its background rule. Every mockup that
-workflow produces defaults to the work brand — that's very likely a leftover
+workflow defaults to that teal — that's very likely a leftover
 default rather than a deliberate choice, and it should be fixed as part of
 this migration, not just the visible screens.
 
@@ -78,7 +78,7 @@ principles below rather than a finished screen spec.
 
 ## Acceptance / how to check it worked
 
-- Nothing in the app should read as "corporate teal" anymore — if `#00968C`
+- Nothing in the app should read as teal anymore — if `#00968C`
   or its near neighbors still appear anywhere (including the `/design`
   command config), that's a miss.
 - Body text should be 16px minimum, captions 13px minimum — check against

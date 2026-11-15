@@ -1,9 +1,7 @@
 // Card — Alvar design system
 //
-// A surface container for grouping related content. Same shape as
-// so-design-system's Card by design — the semantic token names (surface,
-// raised, muted, border) match on purpose, so this pattern stays familiar
-// across both your work and personal systems.
+// A surface container for grouping related content. Uses the semantic
+// surface tokens (surface, raised, muted, border).
 //
 // Variants:
 //   default — surface with subtle border

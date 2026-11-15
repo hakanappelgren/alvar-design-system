@@ -1,10 +1,12 @@
 /* ── Alvar — personal design system ───────────────────────────────────────────
-   Tailwind v4 CSS-first config, same pattern as so-design-system's globals.css.
+   Tailwind v4 CSS-first config.
    Full reasoning: ../../DESIGN-SYSTEM.md
 
-   HOW TO USE:
-   - Copy this whole file into your project's globals.css, or merge it above
-     your existing `@theme inline` block.
+   HOW TO USE (installed as an npm dependency — see README):
+   - In globals.css: `@import 'alvar-design-system/tokens.css';`
+     This file already imports Tailwind, so don't import it again.
+   - The @source line below lets Tailwind see the classes used inside the
+     packaged components; Tailwind skips node_modules otherwise.
    - Outdoor-mode apps (workout-app): leave the default light `:root` values —
      do not add class="dark" to <html>.
    - Companion/studio apps (research-pod): add class="dark" to <html> by
@@ -12,6 +14,7 @@
 */
 
 @import 'tailwindcss';
+@source '../components';
 
 /* Step 1: raw values that flip between light (outdoor) and dark (companion/studio) */
 :root {
@@ -85,7 +88,7 @@
   --text-reading: 18px; /* studio article body, pair with font-serif */
   --text-stat: 64px; /* outdoor big number — can go to 96px per-component */
 
-  /* Border radius — reused as-is from so-design-system; no reason to diverge */
+  /* Border radius */
   --radius-xs: 4px;
   --radius-sm: 6px;
   --radius-md: 8px;

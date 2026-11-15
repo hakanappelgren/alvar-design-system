@@ -1,15 +1,8 @@
 # Alvar — personal design system
 
-Håkan's private design system, for personal apps only. Named after the alvar — the
-limestone plain on Öland — the same way the work system draws its name from
-SeventyOne. This is the personal counterpart, living at `dev/templates/` rather
-than `dev/projects/active/`, so it stays a reusable starting point rather than a
-product of its own.
-
-Do not confuse this with `so-design-system` (`dev/projects/active/so-design-system`),
-which is the SeventyOne Consulting brand system for client and company work. Alvar
-is for the apps that are just yours: workout-app, research-pod, and whatever comes
-next.
+Håkan's design system for personal apps. Named after the alvar — the limestone
+plain on Öland. It is a reusable starting point rather than a product of its own,
+used by workout-app, research-pod, training-coach and whatever comes next.
 
 ---
 
@@ -18,38 +11,58 @@ next.
 | File | What it does |
 |---|---|
 | `DESIGN-SYSTEM.md` | The full spec — palette story, three usage modes, type scale, spacing, motion, icons, component inventory, and the reasoning behind each decision |
-| `src/styles/tokens.css` | Tailwind v4 CSS-first token file — colors, type, radius, shadow, motion. Drop-in, same pattern as `so-design-system`'s `globals.css` |
+| `src/styles/tokens.css` | Tailwind v4 CSS-first token file — colors, type, radius, shadow, motion. Imported as `alvar-design-system/tokens.css` |
 | `src/components/ui/` | Starter components: Button, Badge, Card, StatDisplay |
 
 ---
 
 ## How to use in a new project
 
-1. Copy `src/styles/tokens.css` into your project's `globals.css` (or merge — see the
-   comment block at the top of the file for what to keep vs. replace)
-2. Copy `src/components/ui/` into your component folder
-3. Make sure the system font stack loads — no web font needed, SF Pro and New York
-   ship with macOS/iOS Safari, so there's nothing to import
+Alvar is installed as a git dependency, so every project uses the same versioned
+source instead of a copy that drifts.
+
+1. Install a tagged version:
+   ```bash
+   npm install git+https://github.com/hakanappelgren/alvar-design-system.git#v0.1.0
+   ```
+2. `src/app/globals.css` — replace `@import 'tailwindcss';` with:
+   ```css
+   @import 'alvar-design-system/tokens.css';
+   ```
+   The token file imports Tailwind itself and tells Tailwind to scan the packaged
+   components, so nothing else is needed.
+3. `next.config.ts` — the components ship as TypeScript source:
+   ```ts
+   const nextConfig: NextConfig = { transpilePackages: ['alvar-design-system'] }
+   ```
 4. Decide your app's default mode:
    - Outdoor apps (glanceable, high-contrast, used at a distance): don't add `class="dark"` — light mode is the outdoor palette
    - Companion/studio apps (considered, screen-close use): add `class="dark"` to `<html>` by default
 5. Import and use:
    ```tsx
-   import { Button, Badge, Card, StatDisplay } from '@/components/ui'
+   import { Button, Badge, Card, StatDisplay } from 'alvar-design-system'
 
    <Button variant="action">Finish set</Button>
    <Badge variant="new">new</Badge>
    <StatDisplay value={42} label="reps" />
    ```
 
+No web font needed — SF Pro and New York ship with macOS/iOS Safari.
+
+### Releasing a change
+
+Change tokens or components here, bump `version` in `package.json`, merge, then tag
+(`git tag v0.2.0 && git push origin v0.2.0`). Each project upgrades when it chooses by
+changing the tag in its `package.json`. App-specific components stay in the app;
+only what two apps genuinely share moves here.
+
 ---
 
 ## Why this exists, in one paragraph
 
-SeventyOne's design system is built for client-facing, brand-consistent work. Your
-personal apps don't need to look like a consultancy — they need to be legible on a
-gym floor, calm enough to read on a screen at your desk, and yours. Alvar pulls its
-palette from Öland and the Swedish mountains instead of a brand book, and its
+Personal apps need to be legible on a gym floor, calm enough to read on a screen
+at your desk, and yours. Alvar pulls its palette from Öland and the Swedish
+mountains instead of a brand book, and its
 structure — one shared token source, mode-specific application — is built to scale
 to more personal apps without redoing this thinking each time.
 
