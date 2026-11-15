@@ -1,15 +1,8 @@
 # Alvar — personal design system
 
-Håkan's private design system, for personal apps only. Named after the alvar — the
-limestone plain on Öland — the same way the work system draws its name from
-SeventyOne. This is the personal counterpart, living at `dev/templates/` rather
-than `dev/projects/active/`, so it stays a reusable starting point rather than a
-product of its own.
-
-Do not confuse this with `so-design-system` (`dev/projects/active/so-design-system`),
-which is the SeventyOne Consulting brand system for client and company work. Alvar
-is for the apps that are just yours: workout-app, research-pod, and whatever comes
-next.
+Håkan's design system for personal apps. Named after the alvar — the limestone
+plain on Öland. It is a reusable starting point rather than a product of its own,
+used by workout-app, research-pod, training-coach and whatever comes next.
 
 ---
 
@@ -67,10 +60,9 @@ only what two apps genuinely share moves here.
 
 ## Why this exists, in one paragraph
 
-SeventyOne's design system is built for client-facing, brand-consistent work. Your
-personal apps don't need to look like a consultancy — they need to be legible on a
-gym floor, calm enough to read on a screen at your desk, and yours. Alvar pulls its
-palette from Öland and the Swedish mountains instead of a brand book, and its
+Personal apps need to be legible on a gym floor, calm enough to read on a screen
+at your desk, and yours. Alvar pulls its palette from Öland and the Swedish
+mountains instead of a brand book, and its
 structure — one shared token source, mode-specific application — is built to scale
 to more personal apps without redoing this thinking each time.
 

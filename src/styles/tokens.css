@@ -1,5 +1,5 @@
 /* ── Alvar — personal design system ───────────────────────────────────────────
-   Tailwind v4 CSS-first config, same pattern as so-design-system's globals.css.
+   Tailwind v4 CSS-first config.
    Full reasoning: ../../DESIGN-SYSTEM.md
 
    HOW TO USE (installed as an npm dependency — see README):
@@ -88,7 +88,7 @@
   --text-reading: 18px; /* studio article body, pair with font-serif */
   --text-stat: 64px; /* outdoor big number — can go to 96px per-component */
 
-  /* Border radius — reused as-is from so-design-system; no reason to diverge */
+  /* Border radius */
   --radius-xs: 4px;
   --radius-sm: 6px;
   --radius-md: 8px;
